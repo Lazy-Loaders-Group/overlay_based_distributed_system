@@ -1,0 +1,13 @@
+# Python dependencies for distributed content searching system
+
+# No external dependencies required for Phase 1 & 2
+# All using standard library: socket, threading, argparse, csv, etc.
+
+# For Phase 3 (REST API):
+flask>=3.0.0
+requests>=2.31.0
+
+# For Phase 4 (Analysis):
+pandas>=2.0.0
+matplotlib>=3.7.0
+numpy>=1.24.0

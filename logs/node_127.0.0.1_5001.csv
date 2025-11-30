@@ -1,0 +1,2 @@
+timestamp,event_type,query,hops,latency_ms,sender_ip,sender_port
+2025-11-29T23:21:19.291529,SEARCH_RESULT,Lady Gaga,1,1.5919208526611328,127.0.0.1,5002
