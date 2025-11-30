@@ -7,7 +7,7 @@ import sys
 
 class BootstrapServer:
     """Bootstrap server for managing node registration."""
-    def __init__(self, port=55000):
+    def __init__(self, port=5000):
         self.port = port
         self.nodes = []  # List of {'ip': ip, 'port': port, 'username': username}
         self.lock = threading.Lock()
@@ -225,16 +225,27 @@ class BootstrapServerConnection:
 
 if __name__ == '__main__':
     """Run the bootstrap server."""
+    # Get port from command line or use default
+    port = 5000
+    if len(sys.argv) > 1:
+        try:
+            port = int(sys.argv[1])
+        except ValueError:
+            print(f"[ERROR] Invalid port: {sys.argv[1]}")
+            print("Usage: python bootstrap_server.py [port]")
+            print("Example: python bootstrap_server.py 5000")
+            sys.exit(1)
+    
     print("=" * 60)
     print("BOOTSTRAP SERVER - Distributed File Search System")
     print("=" * 60)
-    print("Starting bootstrap server on port 55000...")
+    print(f"Starting bootstrap server on port {port}...")
     print("This server helps nodes find each other.")
-    print("Keep this terminal open while running your demo.")
+    print("Keep this terminal open while testing.")
     print("=" * 60)
     print()
     
-    server = BootstrapServer(port=55000)
+    server = BootstrapServer(port=port)
     try:
         server.start()
     except KeyboardInterrupt:

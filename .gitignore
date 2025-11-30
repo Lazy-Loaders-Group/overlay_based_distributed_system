@@ -37,6 +37,9 @@ ENV/
 .DS_Store
 Thumbs.db
 
+# Project-specific
+Documents/
+
 # Large Log Files
 logs/*.log
 

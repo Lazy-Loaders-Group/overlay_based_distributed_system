@@ -2,23 +2,49 @@
 
 ## Ready in 5 Minutes!
 
+> **Important for macOS users:** Port 5000 is often used by AirPlay Receiver. If you get "Address already in use" error, use port 5555 instead and update all `--bs-port` values accordingly.
+
+---
+
+## Prerequisites
+
+**Before starting, navigate to the project directory:**
+
+**Windows:**
+```cmd
+cd C:\path\to\overlay_based_distributed_system
+```
+
+**macOS/Linux:**
+```bash
+cd /path/to/overlay_based_distributed_system
+```
+
+Replace `path/to` with your actual project location (e.g., `C:\Users\YourName\Documents\` or `/home/username/projects/`).
+
+**All commands below assume you are already in the project root directory.**
+
 ---
 
 ## Step 1: Start Bootstrap Server (Terminal 1)
 
 **Windows:**
 ```cmd
-cd C:\your_file_path\overlay_based_distributed_system
 python src\bootstrap_server.py 5000
 ```
 
 **macOS/Linux:**
 ```bash
-cd ~/Documents/distributed_system
 python3 src/bootstrap_server.py 5000
 ```
 
-**Expected:** Server listening on port 5000
+**If port 5000 is in use (common on macOS):**
+```bash
+python3 src/bootstrap_server.py 5555
+```
+*Remember to use `--bs-port 5555` in all node commands if using this port.*
+
+**Expected:** Server listening on the specified port
 
 ---
 
@@ -29,85 +55,67 @@ Copy-paste these commands into 10 separate terminals/command prompts:
 **Windows:**
 ```cmd
 REM Terminal 2 - Node 1
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5001 --username node1 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5001 --username node1 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 3 - Node 2  
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5002 --username node2 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5002 --username node2 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 4 - Node 3
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5003 --username node3 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5003 --username node3 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 5 - Node 4
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5004 --username node4 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5004 --username node4 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 6 - Node 5
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5005 --username node5 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5005 --username node5 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 7 - Node 6
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5006 --username node6 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5006 --username node6 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 8 - Node 7
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5007 --username node7 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5007 --username node7 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 9 - Node 8
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5008 --username node8 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5008 --username node8 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 10 - Node 9
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5009 --username node9 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5009 --username node9 --bs-ip 127.0.0.1 --bs-port 5000
 
 REM Terminal 11 - Node 10
-cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5010 --username node10 --bs-ip 127.0.0.1 --bs-port 5000
+python src\node.py --port 5010 --username node10 --bs-ip 127.0.0.1 --bs-port 5000
 ```
 
 **macOS/Linux:**
+```bash
 # Terminal 2 - Node 1
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5001 --username node1 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5001 --username node1 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 3 - Node 2  
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5002 --username node2 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5002 --username node2 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 4 - Node 3
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5003 --username node3 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5003 --username node3 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 5 - Node 4
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5004 --username node4 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5004 --username node4 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 6 - Node 5
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5005 --username node5 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5005 --username node5 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 7 - Node 6
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5006 --username node6 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5006 --username node6 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 8 - Node 7
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5007 --username node7 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5007 --username node7 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 9 - Node 8
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5008 --username node8 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5008 --username node8 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 10 - Node 9
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5009 --username node9 --bs-ip 127.0.0.1 --bs-port 5000
-```
+python3 src/node.py --port 5009 --username node9 --bs-ip 127.0.0.1 --bs-port 5000
 
 # Terminal 11 - Node 10
-```
-cd ~/Documents/distributed_system && python3 src/node.py --port 5010 --username node10 --bs-ip 127.0.0.1 --bs-port 5000
+python3 src/node.py --port 5010 --username node10 --bs-ip 127.0.0.1 --bs-port 5000
 ```
 
 ---
@@ -232,17 +240,15 @@ On **EACH of the remaining 8 nodes**:
 
 ## Step 10: Generate Analysis Plots
 
-In a new terminal/command prompt:
+In a new terminal/command prompt (navigate to project directory first):
 
 **Windows:**
 ```cmd
-cd C:\your_file_path\overlay_based_distributed_system
 python src\plot_stats.py
 ```
 
 **macOS/Linux:**
 ```bash
-cd ~/Documents/distributed_system
 python3 src/plot_stats.py
 ```
 
