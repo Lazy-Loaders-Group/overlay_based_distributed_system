@@ -2,7 +2,7 @@
 
 A distributed peer-to-peer (P2P) file sharing system implementation for university coursework. Nodes form an unstructured overlay network, search for files using UDP-based flooding, and transfer files reliably using REST API (Flask).
 
-## 📖 Overview
+## Overview
 
 This project implements a distributed content searching system where:
 - **10+ nodes** share **20 files** (3-5 files per node)
@@ -12,7 +12,7 @@ This project implements a distributed content searching system where:
 - System handles **graceful node departures** and continues operating
 - Comprehensive **performance metrics** collection and analysis
 
-## 🎯 Project Phases
+## Project Phases
 
 1. **Phase 1**: Network topology formation and node content initialization
 2. **Phase 2**: UDP-based socket communication for file search (flooding algorithm)
@@ -21,15 +21,22 @@ This project implements a distributed content searching system where:
 
 See `PROJECT_TASK.md` for complete project requirements.
 
-## 📋 Prerequisites
+## Prerequisites
 
 - **Python 3.8+**
 - **pip** package manager
-- **macOS/Linux** (tested on macOS)
+- **Windows, macOS, or Linux**
 
-## 🛠️ Installation
+## Installation
 
 1. **Navigate to project directory:**
+   
+   **Windows:**
+   ```cmd
+   cd C:\your_file_path\overlay_based_distributed_system
+   ```
+   
+   **macOS/Linux:**
    ```bash
    cd /your_file_path/overlay_based_distributed_system
    ```
@@ -44,17 +51,20 @@ See `PROJECT_TASK.md` for complete project requirements.
    - `requests` - HTTP client for file downloads
    - `pandas`, `matplotlib`, `numpy` - Performance analysis and plotting
 
-## ⚡ Quick Start
+## Quick Start
 
 ### Option 1: Automated Demo (5 Nodes)
 
-1. **Make script executable:**
+1. **Run demo:**
+   
+   **Windows:**
+   ```cmd
+   run_demo.bat
+   ```
+   
+   **macOS/Linux:**
    ```bash
    chmod +x run_demo.sh
-   ```
-
-2. **Run demo:**
-   ```bash
    ./run_demo.sh
    ```
    
@@ -63,12 +73,19 @@ See `PROJECT_TASK.md` for complete project requirements.
    - 5 auto-registered nodes (ports 5001-5005)
    - Logs written to `logs/` directory
 
-3. **Start your interactive node** (in a new terminal):
+2. **Start your interactive node** (in a new terminal/command prompt):
+   
+   **Windows:**
+   ```cmd
+   python src\node.py --port 5006 --username my_node --bs-ip 127.0.0.1 --bs-port 5555
+   ```
+   
+   **macOS/Linux:**
    ```bash
    python3 src/node.py --port 5006 --username my_node --bs-ip 127.0.0.1 --bs-port 5555
    ```
 
-4. **Register and interact:**
+3. **Register and interact:**
    ```
    > register
    > search lord
@@ -77,17 +94,40 @@ See `PROJECT_TASK.md` for complete project requirements.
    > leave
    ```
 
-5. **Stop the network:**
-   Press `Ctrl+C` in the terminal running `run_demo.sh`
+4. **Stop the network:**
+   
+   **Windows:** Close the individual command prompt windows
+   
+   **macOS/Linux:** Press `Ctrl+C` in the terminal running `run_demo.sh`
 
 ### Option 2: Manual Setup (10+ Nodes for Phase 4)
 
 1. **Start Bootstrap Server:**
+   
+   **Windows:**
+   ```cmd
+   python src\bootstrap_server.py 5000
+   ```
+   
+   **macOS/Linux:**
    ```bash
    python3 src/bootstrap_server.py 5000
    ```
 
-2. **Start 10 nodes** (each in separate terminal):
+2. **Start 10 nodes** (each in separate terminal/command prompt):
+   
+   **Windows:**
+   ```cmd
+   REM Node 1
+   python src\node.py --port 5001 --username node1 --bs-ip 127.0.0.1 --bs-port 5000
+   
+   REM Node 2
+   python src\node.py --port 5002 --username node2 --bs-ip 127.0.0.1 --bs-port 5000
+   
+   REM ... Repeat for nodes 3-10 (ports 5003-5010)
+   ```
+   
+   **macOS/Linux:**
    ```bash
    # Node 1
    python3 src/node.py --port 5001 --username node1 --bs-ip 127.0.0.1 --bs-port 5000
@@ -108,7 +148,7 @@ See `PROJECT_TASK.md` for complete project requirements.
 
 See `QUICK_START.md` for detailed Phase 4 testing instructions.
 
-## 🎮 Available Commands
+## Available Commands
 
 | Command | Description | Example |
 |---------|-------------|---------|
@@ -122,7 +162,7 @@ See `QUICK_START.md` for detailed Phase 4 testing instructions.
 | `leave` | Gracefully leave network (notifies all neighbors) | `leave` |
 | `exit` | Force quit without cleanup | `exit` |
 
-## 🔍 Search Algorithm
+## Search Algorithm
 
 - **Method**: Unstructured flooding with TTL
 - **Transport**: UDP sockets
@@ -131,7 +171,7 @@ See `QUICK_START.md` for detailed Phase 4 testing instructions.
   - ✅ `"Happy"` matches `"Happy feet"`
   - ❌ `"Lo"` does NOT match `"Lord of the rings"` (incomplete word)
 
-## 📦 File Transfer
+## File Transfer
 
 - **Protocol**: REST API (Flask server per node)
 - **Transport**: TCP (HTTP)
@@ -144,7 +184,7 @@ See `QUICK_START.md` for detailed Phase 4 testing instructions.
   4. Hash calculated and displayed
   5. Integrity verified on both ends
 
-## 📊 Performance Analysis
+## Performance Analysis
 
 ### Metrics Collected
 
@@ -177,7 +217,7 @@ For each metric, the system calculates:
 
 See `QUICK_START.md` for complete Phase 4 testing checklist.
 
-## 🌐 Protocol Specification
+## Protocol Specification
 
 The system implements a character-based protocol for easy debugging:
 
@@ -224,7 +264,7 @@ nc -u 127.0.0.1 5000
 
 Full protocol specification in `PROJECT_TASK.md` Section 4.
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 overlay_based_distributed_system/
@@ -257,14 +297,23 @@ overlay_based_distributed_system/
 └── PROJECT_TASK.md                # Complete project specification
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Run Comprehensive Tests
+
+**Windows:**
+```cmd
+python tests\test_comprehensive.py
+```
+
+**macOS/Linux:**
 ```bash
 python3 tests/test_comprehensive.py
 ```
 
 ### Verify Bootstrap Server
+
+**macOS/Linux (using netcat):**
 ```bash
 # Terminal 1
 python3 src/bootstrap_server.py 5000
@@ -273,6 +322,8 @@ python3 src/bootstrap_server.py 5000
 nc -u 127.0.0.1 5000
 0036 REG 127.0.0.1 5001 testnode
 ```
+
+**Windows:** Use a UDP client tool or test directly with Python scripts
 
 ### Phase 4 Testing Checklist
 See `QUICK_START.md` for complete testing procedure:
@@ -285,7 +336,7 @@ See `QUICK_START.md` for complete testing procedure:
 - ✅ Generate CDF plots
 - ✅ Calculate min/max/avg/stddev
 
-## 📈 Expected Performance
+## Expected Performance
 
 **Network with 10 nodes:**
 - **Neighbors per node**: 2 (initial) → 2-4 (after stabilization)
@@ -300,7 +351,7 @@ See `QUICK_START.md` for complete testing procedure:
 - **Average hops**: 2-4 (may increase)
 - **Network**: Remains functional
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Node Registration Issues
 
@@ -327,6 +378,19 @@ See `QUICK_START.md` for complete testing procedure:
 
 ### Bootstrap Server Connection Failed
 
+**Windows:**
+```cmd
+REM Check if BS is running
+tasklist | findstr python
+
+REM Check port availability
+netstat -an | findstr 5000
+
+REM Restart BS if needed
+python src\bootstrap_server.py 5000
+```
+
+**macOS/Linux:**
 ```bash
 # Check if BS is running
 ps aux | grep bootstrap_server.py
@@ -338,32 +402,32 @@ netstat -an | grep 5000
 python3 src/bootstrap_server.py 5000
 ```
 
-## 👥 Project Team
+## Project Team
 
 This is a group project for distributed systems coursework (5 students per group).
 
-## 📝 Grading Breakdown
+## Grading Breakdown
 
 - **Design**: 25% - Network topology, protocol design, system architecture
 - **Implementation & Demo**: 40% - Working system with 10+ nodes, file search/transfer
 - **Performance Analysis**: 25% - Statistical analysis, CDF plots, critical evaluation
 - **Personal Reflection**: 10% - Individual contributions and learnings
 
-## 📚 Documentation
+## Documentation
 
 - **`PROJECT_TASK.md`** - Complete project specification and requirements
 - **`QUICK_START.md`** - Detailed Phase 4 testing instructions with checklist
 - **`project_description.txt`** - Original project brief
 - **`Documents/project_guide.txt`** - Implementation guidance
 
-## 🎓 Credits
+## Credits
 
 This project is derived from:
 - **Dr. Dilum Bandara** - Original project design
 - **Dr. Anura P. Jayasumana** - ECE 658 Internet Engineering, Colorado State University, 2012
 - **Vidarshana Bandara** - Further enhancements
 
-## 📄 License
+## License
 
 Academic project for educational purposes only.
 

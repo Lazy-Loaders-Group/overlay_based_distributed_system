@@ -1,50 +1,112 @@
-# 🚀 Quick Start Guide - Phase 4 Testing
+# Quick Start Guide - Phase 4 Testing
 
 ## Ready in 5 Minutes!
 
 ---
 
 ## Step 1: Start Bootstrap Server (Terminal 1)
+
+**Windows:**
+```cmd
+cd C:\your_file_path\overlay_based_distributed_system
+python src\bootstrap_server.py 5000
+```
+
+**macOS/Linux:**
 ```bash
 cd ~/Documents/distributed_system
-python3 src/bootstrap_server.py```
+python3 src/bootstrap_server.py 5000
+```
+
 **Expected:** Server listening on port 5000
 
 ---
 
 ## Step 2: Start 10 Nodes (Terminals 2-11)
 
-Copy-paste these commands into 10 separate terminals:
+Copy-paste these commands into 10 separate terminals/command prompts:
 
-```bash
+**Windows:**
+```cmd
+REM Terminal 2 - Node 1
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5001 --username node1 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 3 - Node 2  
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5002 --username node2 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 4 - Node 3
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5003 --username node3 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 5 - Node 4
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5004 --username node4 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 6 - Node 5
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5005 --username node5 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 7 - Node 6
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5006 --username node6 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 8 - Node 7
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5007 --username node7 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 9 - Node 8
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5008 --username node8 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 10 - Node 9
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5009 --username node9 --bs-ip 127.0.0.1 --bs-port 5000
+
+REM Terminal 11 - Node 10
+cd C:\your_file_path\overlay_based_distributed_system && python src\node.py --port 5010 --username node10 --bs-ip 127.0.0.1 --bs-port 5000
+```
+
+**macOS/Linux:**
 # Terminal 2 - Node 1
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5001 --username node1 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 3 - Node 2  
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5002 --username node2 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 4 - Node 3
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5003 --username node3 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 5 - Node 4
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5004 --username node4 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 6 - Node 5
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5005 --username node5 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 7 - Node 6
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5006 --username node6 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 8 - Node 7
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5007 --username node7 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 9 - Node 8
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5008 --username node8 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 10 - Node 9
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5009 --username node9 --bs-ip 127.0.0.1 --bs-port 5000
+```
 
 # Terminal 11 - Node 10
+```
 cd ~/Documents/distributed_system && python3 src/node.py --port 5010 --username node10 --bs-ip 127.0.0.1 --bs-port 5000
 ```
 
@@ -170,7 +232,15 @@ On **EACH of the remaining 8 nodes**:
 
 ## Step 10: Generate Analysis Plots
 
-In a new terminal:
+In a new terminal/command prompt:
+
+**Windows:**
+```cmd
+cd C:\your_file_path\overlay_based_distributed_system
+python src\plot_stats.py
+```
+
+**macOS/Linux:**
 ```bash
 cd ~/Documents/distributed_system
 python3 src/plot_stats.py
@@ -216,6 +286,13 @@ python3 src/plot_stats.py
 ## Step 12: Collect Results
 
 Copy all log files:
+
+**Windows:**
+```cmd
+xcopy logs logs_experiment_%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2% /E /I
+```
+
+**macOS/Linux:**
 ```bash
 cp -r logs logs_experiment_$(date +%Y%m%d_%H%M%S)
 ```
@@ -248,7 +325,7 @@ cp -r logs logs_experiment_$(date +%Y%m%d_%H%M%S)
 
 ---
 
-## 🎯 Quick Commands Reference
+## Quick Commands Reference
 
 | Command | Description |
 |---------|-------------|
@@ -264,10 +341,11 @@ cp -r logs logs_experiment_$(date +%Y%m%d_%H%M%S)
 
 ---
 
-## 🔍 Verify Protocol Compliance (Section 4.1)
+## Verify Protocol Compliance (Section 4.1)
 
 ### Test Bootstrap Server with netcat (Optional Verification)
 
+**macOS/Linux:**
 ```bash
 # Open terminal
 nc -u 127.0.0.1 5000
@@ -285,6 +363,8 @@ nc -u 127.0.0.1 5000
 # Expected response:
 0012 UNROK 0
 ```
+
+**Windows:** Use a UDP client tool or test directly with Python scripts
 
 ### Message Format Verification
 
@@ -315,12 +395,20 @@ All messages should follow:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Node won't register
+
+**Windows:**
+```cmd
+REM Check bootstrap server is running
+netstat -an | findstr 5000
+```
+
+**macOS/Linux:**
 ```bash
 # Check bootstrap server is running
-# Try: netstat -an | grep 5000
+netstat -an | grep 5000
 ```
 
 ### "Already registered" error
@@ -348,7 +436,7 @@ All messages should follow:
 
 ---
 
-## 📊 Expected Results (Based on Section 4.1 Protocol)
+## Expected Results (Based on Section 4.1 Protocol)
 
 ### Bootstrap Server Communication
 - **REG format:** `length REG IP_address port_no username`
@@ -384,7 +472,7 @@ All messages should follow:
 
 ---
 
-## ✅ Phase 4 Requirements Checklist
+## Phase 4 Requirements Checklist
 
 **Before starting:**
 - [ ] Bootstrap server starts without errors
@@ -448,7 +536,7 @@ All messages should follow:
 
 ---
 
-## 🎬 Demo Script (15 min)
+## Demo Script (15 min)
 
 **Minute 0-2:** Setup
 - Show bootstrap + 10 nodes running
@@ -482,11 +570,11 @@ All messages should follow:
 
 ---
 
-## 🎊 You're Ready!
+## You're Ready!
 
 Everything is set up and verified. Just follow these steps and you'll have successful Phase 4 results.
 
-**Good luck with your testing and demo!** 🚀
+**Good luck with your testing and demo!**
 
 ---
 
